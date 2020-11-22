@@ -1,0 +1,42 @@
+<mat-toolbar color="secondary">
+    Subnet details for Region {{region}} and  {{VpcId}}
+  </mat-toolbar>
+
+  <mat-spinner *ngIf="!isLoaded"></mat-spinner>
+<mat-table class="lessons-table mat-elevation-z8" *ngIf="isLoaded" [dataSource]="dataSource">
+
+    <ng-container matColumnDef="SubnetId">
+        <mat-header-cell *matHeaderCellDef>SubnetId</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">{{lesson.SubnetId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="CidrBlock">
+        <mat-header-cell *matHeaderCellDef>CidrBlock</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let lesson">{{lesson.CidrBlock}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="SubnetArn">
+        <mat-header-cell *matHeaderCellDef>SubnetArn</mat-header-cell>
+        <mat-cell class="duration-cell"
+                  *matCellDef="let lesson">{{lesson.SubnetArn}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="AvailableIpAddressCount">
+        <mat-header-cell *matHeaderCellDef>AvailableIpAddressCount</mat-header-cell>
+        <mat-cell class="duration-cell"
+                  *matCellDef="let lesson">{{lesson.AvailableIpAddressCount}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="State">
+        <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
+        <mat-cell class="duration-cell"
+                  *matCellDef="let lesson">{{lesson.State}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" ></mat-row>
+
+</mat-table>

@@ -1,0 +1,27 @@
+<mat-spinner *ngIf="!isLoaded"></mat-spinner>
+
+<mat-table class="lessons-table mat-elevation-z8" *ngIf="isLoaded" [dataSource]="data">
+
+    <ng-container matColumnDef="Endpoint">
+        <mat-header-cell *matHeaderCellDef>Endpoint</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">{{lesson.Endpoint}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="RegionName">
+        <mat-header-cell *matHeaderCellDef>RegionName</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let lesson">{{lesson.RegionName}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="OptInStatus">
+        <mat-header-cell *matHeaderCellDef>OptInStatus</mat-header-cell>
+        <mat-cell class="duration-cell"
+                  *matCellDef="let lesson">{{lesson.OptInStatus}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="getVPC(row)"></mat-row>
+
+</mat-table>

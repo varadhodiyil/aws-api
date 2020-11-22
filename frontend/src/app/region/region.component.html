@@ -1,0 +1,48 @@
+<mat-toolbar color="secondary">
+    VPC details for {{data.region}}
+  </mat-toolbar>
+
+  <mat-spinner *ngIf="!isLoaded"></mat-spinner>
+<mat-table class="lessons-table mat-elevation-z8" *ngIf="isLoaded" [dataSource]="dataSource">
+
+    <ng-container matColumnDef="VpcId">
+        <mat-header-cell *matHeaderCellDef>VpcId</mat-header-cell>
+        <mat-cell *matCellDef="let lesson">{{lesson.VpcId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="CidrBlock">
+        <mat-header-cell *matHeaderCellDef>CidrBlock</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let lesson">{{lesson.CidrBlock}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="DhcpOptionsId">
+        <mat-header-cell *matHeaderCellDef>DhcpOptionsId</mat-header-cell>
+        <mat-cell class="duration-cell"
+                  *matCellDef="let lesson">{{lesson.DhcpOptionsId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="OwnerId">
+        <mat-header-cell *matHeaderCellDef>OwnerId</mat-header-cell>
+        <mat-cell class="duration-cell"
+                  *matCellDef="let lesson">{{lesson.OwnerId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="State">
+        <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
+        <mat-cell class="duration-cell"
+                  *matCellDef="let lesson">{{lesson.State}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ViewSubnets">
+        <mat-header-cell *matHeaderCellDef>View Details</mat-header-cell>
+        <mat-cell class="duration-cell"
+                  *matCellDef="let lesson"><button mat-button (click)="viewSubnet(lesson.VpcId)" color="primary" > View Details </button> </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" ></mat-row>
+
+</mat-table>
